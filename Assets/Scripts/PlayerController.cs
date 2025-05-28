@@ -9,12 +9,14 @@ public class PlayerController : MonoBehaviour
 	Vector3 m_direction;
 	Vector3 m_velocity;
 	Rigidbody m_rigidBody;
+	Animator m_animator;
 
 	bool m_canMove;
 
 	private void Awake()
 	{
 		m_rigidBody = GetComponent<Rigidbody>();
+		m_animator = GetComponent<Animator>();
 	}
 
 	private void Start()
@@ -22,6 +24,9 @@ public class PlayerController : MonoBehaviour
 		m_direction = new Vector3(0, 0, 0);
 		m_velocity = new Vector3(0, 0, 0);
 		m_canMove = true;
+
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
 	}
 
 	private void Update()
@@ -39,6 +44,15 @@ public class PlayerController : MonoBehaviour
 		var x = Input.GetAxis("Horizontal");
 		var y = Input.GetAxis("Vertical");
 		m_direction = new Vector3 (x, 0, y);
+
+		if (m_direction != Vector3.zero)
+		{
+			m_animator.SetBool("Run", true);
+		}
+		else
+		{
+			m_animator.SetBool("Run", false);
+		}
 	}
 
 	// ÉvÉåÉCÉÑÅ[ÇÃìÆÇ´
