@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour
 	bool m_canMove;
 	bool m_canMine;
 	bool m_isWalkMode;
+	bool m_isMoving;
+
+	float m_idleTimer;
+	float m_idleThreshold;
 
 	private void Awake()
 	{
@@ -31,6 +35,8 @@ public class PlayerController : MonoBehaviour
 		m_canMine = true;
 		m_isWalkMode = false;
 		m_tool.SetActive(false);
+		m_idleTimer = 0f;
+		m_idleThreshold = 5f;
 
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
@@ -39,6 +45,33 @@ public class PlayerController : MonoBehaviour
 	private void Update()
 	{
 		ProcessInput();
+
+		// 待機モーション
+		if (!m_isMoving)
+		{
+			m_idleTimer += Time.deltaTime;
+
+			if (m_idleTimer >= m_idleThreshold )
+			{
+				int variant = Random.Range(0, 2);
+
+				if (variant == 0)
+				{
+					m_animator.SetTrigger("IdleGlove");
+				}
+				else
+				{
+					m_animator.SetTrigger("IdleFan");
+				}
+
+				m_idleTimer = 0f;
+				m_idleThreshold = Random.Range(5f, 10f);	// 次の変化のタイミング
+			}
+		}
+		else
+		{
+			m_idleTimer = 0f;	// 動いている時はリセット
+		}
 	}
 
 	private void FixedUpdate()
@@ -54,19 +87,17 @@ public class PlayerController : MonoBehaviour
 			m_isWalkMode = !m_isWalkMode;
 		}
 
-		var x = Input.GetAxis("Horizontal");
-		var y = Input.GetAxis("Vertical");
+		float x = Input.GetAxisRaw("Horizontal");
+		float y = Input.GetAxisRaw("Vertical");
 		m_direction = new Vector3 (x, 0, y);
+		m_direction = m_direction.normalized;
 
-		// 移動している時
-		if (m_direction != Vector3.zero)
-		{
-			m_animator.SetBool("Run", true);
-		}
-		else
-		{
-			m_animator.SetBool("Run", false);
-		}
+		// 移動中か判断
+		m_isMoving = m_direction != Vector3.zero;
+
+		// 移動している時のアニメーション
+		m_animator.SetBool("Run", m_isMoving && !m_isWalkMode);
+		m_animator.SetBool("Walk", m_isMoving && m_isWalkMode);
 
 		// アニメーションを再生していない時
 		if (m_canMine)
