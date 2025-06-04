@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
 	[SerializeField] float m_moveSpeed;
 	[SerializeField] float m_walkSpeed;
-	[SerializeField] GameObject m_tool;
 
 	Vector3 m_direction;
 	Vector3 m_velocity;
@@ -14,7 +13,6 @@ public class PlayerController : MonoBehaviour
 	Animator m_animator;
 
 	bool m_canMove;
-	bool m_canMine;
 	bool m_isWalkMode;
 	bool m_isMoving;
 
@@ -32,9 +30,7 @@ public class PlayerController : MonoBehaviour
 		m_direction = new Vector3(0, 0, 0);
 		m_velocity = new Vector3(0, 0, 0);
 		m_canMove = true;
-		m_canMine = true;
 		m_isWalkMode = false;
-		m_tool.SetActive(false);
 		m_idleTimer = 0f;
 		m_idleThreshold = 5f;
 
@@ -98,15 +94,6 @@ public class PlayerController : MonoBehaviour
 		// 移動している時のアニメーション
 		m_animator.SetBool("Run", m_isMoving && !m_isWalkMode);
 		m_animator.SetBool("Walk", m_isMoving && m_isWalkMode);
-
-		// アニメーションを再生していない時
-		if (m_canMine)
-		{
-			if (Input.GetMouseButtonDown(0))
-			{
-				m_animator.SetTrigger("Mining");
-			}
-		}
 	}
 
 	// プレイヤーの動き
@@ -137,21 +124,15 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	// アニメーションから呼ばれる
-	public void MiningStart()
+	public void StopMove()
 	{
-		// ツールを表示
-		m_tool.SetActive(true);
 		m_canMove = false;
-		m_canMine = false;
+		m_rigidBody.isKinematic = true;
 	}
 
-	// アニメーションから呼ばれる
-	public void MiningEnd()
+	public void StartMove()
 	{
-		// ツールを非表示
-		m_tool.SetActive(false);
 		m_canMove = true;
-		m_canMine = true;
+		m_rigidBody.isKinematic = false;
 	}
 }
