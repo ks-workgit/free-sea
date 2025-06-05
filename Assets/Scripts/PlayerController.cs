@@ -124,12 +124,14 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+	// ˆÚ“®‚ðŽ~‚ß‚é
 	public void StopMove()
 	{
 		m_canMove = false;
 		m_rigidBody.isKinematic = true;
 	}
 
+	// ˆÚ“®‚ðŽn‚ß‚é
 	public void StartMove()
 	{
 		m_canMove = true;

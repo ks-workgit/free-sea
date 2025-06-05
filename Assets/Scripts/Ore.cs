@@ -6,7 +6,19 @@ public class Ore : MonoBehaviour
 {
     [SerializeField] int m_health;
 
-    public void Mine(int damage)
+    Outline m_outline;
+
+	private void Awake()
+	{
+		m_outline = GetComponent<Outline>();
+	}
+
+	private void Start()
+	{
+		m_outline.enabled = false;
+	}
+
+	public void Mine(int damage)
     {
         m_health -= damage;
 
@@ -15,4 +27,14 @@ public class Ore : MonoBehaviour
 			Destroy(gameObject);
 		}
     }
+
+	public void OutlineAttach()
+	{
+		m_outline.enabled = true;
+	}
+
+	public void OutlineRemove()
+	{
+		m_outline.enabled = false;
+	}
 }

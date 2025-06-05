@@ -4,25 +4,29 @@ using UnityEngine;
 
 public class PlayerMining : MonoBehaviour
 {
-	[SerializeField] GameObject m_tool;
-    [SerializeField] Collider m_collider;
+	// プレイヤー関連
 	[SerializeField] float m_rotationSpeed;
-	[SerializeField] float m_miningInterval;
+	[SerializeField] float m_miningInterval;	// 掘る間隔
 	[SerializeField] int m_miningPower;
-	[SerializeField] Transform m_currentOre;
-
+	[SerializeField] string m_mineTriggerName;
 	PlayerController m_playerController;
 	Animator m_animator;
-	[SerializeField] string m_mineTriggerName;
-	Quaternion m_targetRotation;
-	Ore m_ore;
-	Ore m_lockedOre;
+	Quaternion m_targetRotation;	// 採掘時の向き回転
+	Coroutine m_miningCoroutine;
 
-	//bool m_canMine;
+	bool m_canMine;
 	bool m_isRotating;
 	bool m_isMining;
+	bool m_doMineAnim;
 
-	Coroutine m_miningCoroutine;
+	// ピッケル関連
+	[SerializeField] GameObject m_tool;
+    [SerializeField] Collider m_collider;
+
+	// 鉱石関連
+	[SerializeField] Transform m_currentOre;
+	Ore m_ore;
+	Ore m_lockedOre;	// 鉱石を保持する用
 
 	private void Awake()
 	{
@@ -32,45 +36,51 @@ public class PlayerMining : MonoBehaviour
 
 	private void Start()
 	{
-		m_tool.SetActive(false);
-		m_currentOre = null;
-		//m_canMine = true;
+		m_canMine = true;
 		m_isRotating = false;
 		m_isMining = false;
+		m_doMineAnim = false;
+		m_tool.SetActive(false);
+		m_currentOre = null;
+		m_ore = null;
+		m_lockedOre = null;
 	}
 
 	private void Update()
 	{
-		// 採掘アニメーションを再生していない時かつ鉱石を検知している時
+		// 鉱石を検知している時
 		if (m_ore != null)
 		{
 			m_lockedOre = m_ore;    // 採掘対象を固定して保持
 
-			if (Input.GetMouseButtonDown(0))
+			// 単押しでアニメーションが再生されていない時
+			if (Input.GetMouseButtonDown(0) && !m_doMineAnim)
 			{
 				StartMining();
 			}
-
+			// 押しているかつ掘っている間は動きを止める
+			if (Input.GetMouseButton(0) && m_isMining)
+			{
+				m_playerController.StopMove();
+			}
+			// 離されたら採掘停止
 			if (Input.GetMouseButtonUp(0))
 			{
+				m_canMine = false;
 				StopMining();
 			}
-
-			if (Input.GetMouseButton(0))
-			{
-				//m_playerController.StopMove();
-			}
-			
-			//m_animator.SetTrigger("Mining");
 		}
 		else
 		{
+			// 鉱石がなくなった時
+			m_canMine = false;
 			StopMining();
 		}
 
 		// 回転中は常に向きを更新
 		if (m_isRotating)
 		{
+			// ゆっくり回転し続ける
 			transform.rotation = Quaternion.Slerp(transform.rotation, m_targetRotation, m_rotationSpeed * Time.deltaTime);
 
 			// 十分回転したら止める
@@ -82,6 +92,7 @@ public class PlayerMining : MonoBehaviour
 		}
 	}
 
+	// キャラを鉱石の方向に向ける
 	private void FaceOre()
 	{
 		// 鉱石のベクトルを計算
@@ -96,34 +107,7 @@ public class PlayerMining : MonoBehaviour
 		}
 	}
 
-	// 掘るアニメーションが始まったら呼ばれる
-	public void MiningStart()
-	{
-		// ツールを表示
-		m_tool.SetActive(true);
-		//m_canMine = false;
-	}
-
-	// 鉱石にピッケルが当たった時
-	public void MiningHit()
-	{
-		if (m_lockedOre != null)
-		{
-			// 保持した鉱石を掘る
-			m_lockedOre.Mine(m_miningPower);
-		}
-	}
-
-	// 掘るアニメーション終わったら呼ばれる
-	public void MiningEnd()
-	{		
-		m_lockedOre = null;
-		// ツールを非表示
-		m_tool.SetActive(false);
-		//m_canMine = true;
-		m_playerController.StartMove();
-	}
-
+	// 鉱石を検知した時
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag("Ore"))
@@ -136,10 +120,12 @@ public class PlayerMining : MonoBehaviour
 			if (ore != null )
 			{
 				m_ore = ore;
+				m_ore.OutlineAttach();
 			}
 		}
 	}
 
+	// 範囲から外れた時
 	private void OnTriggerExit(Collider other)
 	{
 		if (other.CompareTag("Ore"))
@@ -154,13 +140,16 @@ public class PlayerMining : MonoBehaviour
 			// すでに鉱石の情報を持っていた場合
 			if (ore == m_ore)
 			{
+				m_ore.OutlineRemove();
 				m_ore = null;
 			}
 		}
 	}
 
+	// 採掘開始
 	private void StartMining()
 	{
+		// 鉱石があり掘っていない時
 		if (!m_isMining && m_lockedOre != null)
 		{
 			m_miningCoroutine = StartCoroutine(MiningLoop());
@@ -168,8 +157,10 @@ public class PlayerMining : MonoBehaviour
 		}
 	}
 
+	// 採掘停止
 	private void StopMining()
 	{
+		// 掘っている時
 		if (m_isMining)
 		{
 			StopCoroutine(m_miningCoroutine);
@@ -177,19 +168,22 @@ public class PlayerMining : MonoBehaviour
 		}
 	}
 
+	// 採掘ループ
 	private IEnumerator MiningLoop()
 	{
 		while (true)
 		{
+			FaceOre();	// 鉱石の方向に向く
+			m_playerController.StopMove();	// 移動を止める
+
+			// 鉱石がなくなったら中止
 			if (m_lockedOre == null)
 			{
 				StopMining();
 				yield break;
 			}
 
-			FaceOre();
-			m_playerController.StopMove();
-
+			// 鉱石があれば掘り続ける
 			if (m_lockedOre != null)
 			{
 				m_animator.SetTrigger(m_mineTriggerName);
@@ -197,5 +191,36 @@ public class PlayerMining : MonoBehaviour
 
 			yield return new WaitForSeconds(m_miningInterval);
 		}
+	}
+
+	// 掘るアニメーションが始まったら呼ばれる
+	public void MiningStart()
+	{
+		m_tool.SetActive(true); // ツールを表示
+		m_canMine = true;
+		m_doMineAnim = true;
+	}
+
+	// 鉱石にピッケルが当たった時
+	public void MiningHit()
+	{
+		if (m_lockedOre != null)
+		{
+			// 保持した鉱石を掘る
+			m_lockedOre.Mine(m_miningPower);
+		}
+	}
+
+	// 掘るアニメーションが終わったら呼ばれる
+	public void MiningEnd()
+	{
+		// 鉱石がなくなるかボタンが離された時
+		if (!m_canMine)
+		{
+			m_lockedOre = null;
+			m_tool.SetActive(false);    // ツールを非表示
+			m_playerController.StartMove();	// 移動を始める
+		}
+		m_doMineAnim = false;
 	}
 }
