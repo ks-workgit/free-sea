@@ -250,6 +250,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &345955690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 345955692}
+  - component: {fileID: 345955691}
+  m_Layer: 0
+  m_Name: OreSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &345955691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345955690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc93c8ce1fae13f45baae56b73ad5a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_availableOres:
+  - {fileID: 11400000, guid: 21adbeb0cc3f47d418caea2498a2e4e5, type: 2}
+--- !u!4 &345955692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345955690}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &418441731
 GameObject:
   m_ObjectHideFlags: 3
@@ -999,13 +1045,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c38a54a80bd304ea181712e19cc821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_tool: {fileID: 445642697}
-  m_collider: {fileID: 445642701}
   m_rotationSpeed: 5
   m_miningInterval: 1
   m_miningPower: 1
-  m_currentOre: {fileID: 0}
   m_mineTriggerName: Mining
+  m_tool: {fileID: 445642697}
+  m_collider: {fileID: 445642701}
+  m_currentOre: {fileID: 0}
 --- !u!65 &895116651
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1402,7 +1448,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553453950}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06252219, y: 0.7040101, z: -0.062463697, w: 0.7046694}
+  m_LocalRotation: {x: 0.062522195, y: 0.7040101, z: -0.0624637, w: 0.7046694}
   m_LocalPosition: {x: 21.000002, y: 5.5, z: 9.994384}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1650,7 +1696,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1976294830}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.062522195, y: 0.7040101, z: -0.062463686, w: 0.7046695}
+  m_LocalRotation: {x: 0.062522195, y: 0.7040101, z: -0.06246369, w: 0.7046695}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1844,3 +1890,4 @@ SceneRoots:
   - {fileID: 1719890539}
   - {fileID: 547069523}
   - {fileID: 614490045}
+  - {fileID: 345955692}
