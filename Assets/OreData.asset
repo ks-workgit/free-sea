@@ -12,8 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e7980d716e66442987b46393eb726c, type: 3}
   m_Name: OreData
   m_EditorClassIdentifier: 
-  m_oreName: Crystal
-  m_durability: 0
-  m_spawnProbability: 0
-  m_orePrefab: {fileID: 4955741622212611688, guid: 11ce072f83b641e4688ce9db1e1e4960,
-    type: 3}
+  m_oreList:
+  - m_oreName: Crystal
+    m_durability: 10
+    m_value: 100
+    m_spawnProbability: 0.5
+    m_orePrefab: {fileID: 4955741622212611688, guid: 11ce072f83b641e4688ce9db1e1e4960,
+      type: 3}
+    m_oreIcon: {fileID: 0}
+  - m_oreName: Iron
+    m_durability: 5
+    m_value: 50
+    m_spawnProbability: 0.5
+    m_orePrefab: {fileID: 1486622086784787235, guid: a8fa2651c9e2bb54f8b8b7b4c645ad56,
+      type: 3}
+    m_oreIcon: {fileID: 0}

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class OreSpawner : MonoBehaviour
 {
-    public OreData[] m_availableOres;
+    public OreData m_oreData;
+	[SerializeField] int m_spawnCount;
+	[SerializeField] Vector3 m_spawnSize;
+	[SerializeField] LayerMask m_groundLayer;
 
 	private void Start()
 	{
@@ -13,17 +16,25 @@ public class OreSpawner : MonoBehaviour
 
 	private void SpawnOre()
 	{
-		float roll = Random.Range(0f, 1f);
-		float cumulative = 0f;
-
-		foreach (OreData ore in m_availableOres)
+		for (int i = 0; i < m_spawnCount; i++)
 		{
-			cumulative += ore.m_spawnProbability;
+			float x = Random.Range(-m_spawnSize.x / 2f, m_spawnSize.x / 2f);
+			float z = Random.Range(-m_spawnSize.z / 2f, m_spawnSize.z / 2f);
+			Vector3 origin = new Vector3(x, 100f, z);
 
-			if (roll <= cumulative)
+			if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, 200f, m_groundLayer))
 			{
-				Instantiate(ore.m_orePrefab, transform.position, Quaternion.identity);
-				break;
+				// 地形の表面位置にスポーン
+				Vector3 spawnPos = hit.point;
+
+				int index = Random.Range(0, m_oreData.m_oreList.Count);
+				OreSetting setting = m_oreData.m_oreList[index];
+
+				var oreGo = Instantiate(setting.m_orePrefab, spawnPos, Quaternion.identity);
+				if (oreGo.TryGetComponent<Ore>(out var ore))
+				{
+					ore.Initialize(setting);
+				}
 			}
 		}
 	}

@@ -279,8 +279,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc93c8ce1fae13f45baae56b73ad5a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_availableOres:
-  - {fileID: 11400000, guid: 21adbeb0cc3f47d418caea2498a2e4e5, type: 2}
+  m_oreData: {fileID: 11400000, guid: 21adbeb0cc3f47d418caea2498a2e4e5, type: 2}
+  m_spawnCount: 50
+  m_spawnSize: {x: 100, y: 0, z: 100}
+  m_groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &345955692
 Transform:
   m_ObjectHideFlags: 0
@@ -1071,7 +1075,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.2, y: 0.3, z: 1.2}
+  m_Size: {x: 1.2, y: 0.5, z: 1.2}
   m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!1 &1241840193
 GameObject:
@@ -1448,7 +1452,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553453950}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.062522195, y: 0.7040101, z: -0.0624637, w: 0.7046694}
+  m_LocalRotation: {x: 0.06252219, y: 0.7040101, z: -0.062463697, w: 0.7046694}
   m_LocalPosition: {x: 21.000002, y: 5.5, z: 9.994384}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1544,7 +1548,7 @@ GameObject:
   - component: {fileID: 1719890539}
   - component: {fileID: 1719890538}
   - component: {fileID: 1719890537}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1696,7 +1700,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1976294830}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.062522195, y: 0.7040101, z: -0.06246369, w: 0.7046695}
+  m_LocalRotation: {x: 0.062522195, y: 0.7040101, z: -0.062463686, w: 0.7046695}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

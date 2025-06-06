@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Ore : MonoBehaviour
 {
-    [SerializeField] int m_health;
+    //[SerializeField] int m_health;
+	private OreSetting m_oreSetting;
+	private int m_currentDurability;
 
     Outline m_outline;
 
@@ -18,11 +20,19 @@ public class Ore : MonoBehaviour
 		m_outline.enabled = false;
 	}
 
+	public void Initialize(OreSetting setting)
+	{
+		m_oreSetting = setting;
+		m_currentDurability = m_oreSetting.m_durability;
+		Debug.Log($"{m_oreSetting.m_oreName} 耐久: {m_currentDurability}/{m_oreSetting.m_durability}");
+	}
+
 	public void Mine(int damage)
     {
-        m_health -= damage;
+		m_currentDurability -= damage;
+		Debug.Log($"{m_oreSetting.m_oreName} に {damage} ダメージ！ 残り耐久: {m_currentDurability}");
 
-        if (m_health <= 0)
+		if (m_currentDurability <= 0)
 		{
 			Destroy(gameObject);
 		}
