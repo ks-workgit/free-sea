@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OreSpawner : MonoBehaviour
 {
-    public OreData m_oreData;
+    [SerializeField] OreData m_oreData;
 	[SerializeField] int m_spawnCount;
 	[SerializeField] Vector3 m_spawnSize;
 	[SerializeField] LayerMask m_groundLayer;
