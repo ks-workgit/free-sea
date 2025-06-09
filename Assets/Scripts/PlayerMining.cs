@@ -173,19 +173,20 @@ public class PlayerMining : MonoBehaviour
 	{
 		while (true)
 		{
-			FaceOre();	// zÎ‚Ì•ûŒü‚ÉŒü‚­
-			m_playerController.StopMove();	// ˆÚ“®‚ğ~‚ß‚é
-
 			// zÎ‚ª‚È‚­‚È‚Á‚½‚ç’†~
-			if (m_lockedOre == null)
+			if (m_lockedOre == null || !m_lockedOre.gameObject.activeInHierarchy)
 			{
 				StopMining();
 				yield break;
 			}
 
+			FaceOre();	// zÎ‚Ì•ûŒü‚ÉŒü‚­
+			m_playerController.StopMove();	// ˆÚ“®‚ğ~‚ß‚é
+
 			// zÎ‚ª‚ ‚ê‚ÎŒ@‚è‘±‚¯‚é
-			if (m_lockedOre != null)
+			if (!m_lockedOre.GetComponent<Ore>().OreDurability() && m_lockedOre.gameObject.activeInHierarchy)
 			{
+				Debug.Log(1);
 				m_animator.SetTrigger(m_mineTriggerName);
 			}
 
@@ -196,6 +197,12 @@ public class PlayerMining : MonoBehaviour
 	// Œ@‚éƒAƒjƒ[ƒVƒ‡ƒ“‚ªn‚Ü‚Á‚½‚çŒÄ‚Î‚ê‚é
 	public void MiningStart()
 	{
+		if (m_lockedOre == null || !m_lockedOre.gameObject.activeInHierarchy)
+		{
+			StopMining();
+			return;
+		}
+
 		m_tool.SetActive(true); // ƒc[ƒ‹‚ğ•\¦
 		m_canMine = true;
 		m_doMineAnim = true;

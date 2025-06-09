@@ -47,4 +47,9 @@ public class Ore : MonoBehaviour
 	{
 		m_outline.enabled = false;
 	}
+
+	public bool OreDurability()
+	{
+		return (m_currentDurability - 1) < 0;
+	}
 }
