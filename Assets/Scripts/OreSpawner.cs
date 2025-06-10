@@ -30,8 +30,8 @@ public class OreSpawner : MonoBehaviour
 				int index = Random.Range(0, m_oreData.m_oreList.Count);
 				OreSetting setting = m_oreData.m_oreList[index];
 
-				var oreGo = Instantiate(setting.m_orePrefab, spawnPos, Quaternion.identity);
-				if (oreGo.TryGetComponent<Ore>(out var ore))
+				var oreSpawn = Instantiate(setting.m_orePrefab, spawnPos, Quaternion.identity);
+				if (oreSpawn.TryGetComponent<Ore>(out var ore))
 				{
 					ore.Initialize(setting);
 				}
