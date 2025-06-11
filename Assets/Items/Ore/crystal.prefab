@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2675036245696825209}
   - component: {fileID: 7128665059465626692}
   - component: {fileID: 7524939915119280256}
+  - component: {fileID: -5739146057163694332}
   m_Layer: 0
   m_Name: crystal
   m_TagString: Ore
@@ -120,7 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db44149b4b97d86408a26d05c53e16e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_health: 5
 --- !u!114 &7524939915119280256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,3 +139,26 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!136 &-5739146057163694332
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4955741622212611688}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Height: 0.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.2, z: -0.05}

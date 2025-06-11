@@ -13,11 +13,11 @@ public class OreData : ScriptableObject
 [Serializable]
 public class OreSetting
 {
-	public string m_oreName;
-	public int m_durability;
-	public int m_value;
-	[Range(0f, 1f)]
-	public float m_spawnProbability;
-	public GameObject m_orePrefab;
-	public Sprite m_oreIcon;
+	public string m_oreName;	// 鉱石の名前
+	public int m_durability;	// 耐久値
+	public int m_value;			// 価値
+	[Range(0.01f, 1f)]
+	public float m_spawnProbability;	// 生成確率
+	public GameObject m_orePrefab;		// 生成するプレハブ
+	public Sprite m_oreIcon;			// UI用のアイコン
 }

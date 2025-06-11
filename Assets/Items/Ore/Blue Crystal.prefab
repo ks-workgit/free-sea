@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6894034136640327650}
   m_Layer: 0
   m_Name: BlueCrystal05 (1)
-  m_TagString: Ore
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 6713276259594262982}
   m_Layer: 0
   m_Name: BlueCrystal05
-  m_TagString: Ore
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 3967909363076034666}
   m_Layer: 0
   m_Name: BlueCrystal14
-  m_TagString: Ore
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 3276420556791639343}
   m_Layer: 0
   m_Name: BlueCrystal05 (2)
-  m_TagString: Ore
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 4194098557465749963}
   m_Layer: 0
   m_Name: BlueCrystal14 (1)
-  m_TagString: Ore
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -655,7 +655,7 @@ GameObject:
   - component: {fileID: 4606755421312729340}
   m_Layer: 0
   m_Name: BlueCrystal15
-  m_TagString: Ore
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -783,7 +783,7 @@ GameObject:
   - component: {fileID: 406159960128435828}
   m_Layer: 0
   m_Name: BlueCrystal07
-  m_TagString: Ore
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -911,7 +911,7 @@ GameObject:
   - component: {fileID: 3635537616440777753}
   m_Layer: 0
   m_Name: BlueCrystal03
-  m_TagString: Ore
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 5077666358871299609}
   m_Layer: 0
   m_Name: Rock005 (1)
-  m_TagString: Ore
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1163,6 +1163,7 @@ GameObject:
   - component: {fileID: 2155842237332165650}
   - component: {fileID: 6268301525119398935}
   - component: {fileID: 6179510690263681512}
+  - component: {fileID: 5016008485923383430}
   m_Layer: 0
   m_Name: Blue Crystal
   m_TagString: Ore
@@ -1224,3 +1225,26 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!136 &5016008485923383430
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8888135919476515465}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.4, z: 0}

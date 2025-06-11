@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Ore : MonoBehaviour
 {
-    //[SerializeField] int m_health;
-	private OreSetting m_oreSetting;
+	private OreSetting m_oreSetting;	// 鉱石の設定データ
 	private int m_currentDurability;
 
     Outline m_outline;
@@ -20,6 +19,7 @@ public class Ore : MonoBehaviour
 		m_outline.enabled = false;
 	}
 
+	// 鉱石に必要な情報を渡して初期化する
 	public void Initialize(OreSetting setting)
 	{
 		m_oreSetting = setting;
@@ -27,6 +27,7 @@ public class Ore : MonoBehaviour
 		Debug.Log($"{m_oreSetting.m_oreName} 耐久: {m_currentDurability}/{m_oreSetting.m_durability}");
 	}
 
+	// 指定されたダメージ分だけ耐久値を減らす
 	public void Mine(int damage)
     {
 		m_currentDurability -= damage;
