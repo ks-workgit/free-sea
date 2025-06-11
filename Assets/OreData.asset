@@ -16,7 +16,7 @@ MonoBehaviour:
   - m_oreName: Crystal
     m_durability: 10
     m_value: 100
-    m_spawnProbability: 0.5
+    m_spawnProbability: 0.2
     m_orePrefab: {fileID: 4955741622212611688, guid: 11ce072f83b641e4688ce9db1e1e4960,
       type: 3}
     m_oreIcon: {fileID: 0}
@@ -30,7 +30,7 @@ MonoBehaviour:
   - m_oreName: Blue Crystal
     m_durability: 8
     m_value: 80
-    m_spawnProbability: 0.5
+    m_spawnProbability: 0.3
     m_orePrefab: {fileID: 8888135919476515465, guid: 185b02a5080c0624d8abeef1216f2d48,
       type: 3}
     m_oreIcon: {fileID: 0}

@@ -10,7 +10,7 @@ public class CameraZoom : MonoBehaviour
     [SerializeField] float m_minRadius = 2f;
     [SerializeField] float m_maxRadius = 10f;
 
-    void Update()
+    private void Update()
     {
         float scrollInput = Input.GetAxis("Mouse ScrollWheel");
 

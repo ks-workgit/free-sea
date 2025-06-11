@@ -121,6 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db44149b4b97d86408a26d05c53e16e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_healthBarPrefab: {fileID: 356066321226329657, guid: 6594fd320e8ab454c8d4bbbbaaa2f41d,
+    type: 3}
 --- !u!114 &7524939915119280256
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -48,7 +48,7 @@ public class OreSpawner : MonoBehaviour
 	{
 		float totalProbability = 0f;
 
-		// 確率の合計を計算
+		// 鉱石ごとの出現確率をすべて足し合わせて、合計確率を出す
 		foreach (var setting in m_oreData.m_oreList)
 		{
 			totalProbability += setting.m_spawnProbability;
