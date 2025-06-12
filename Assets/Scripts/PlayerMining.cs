@@ -9,15 +9,15 @@ public class PlayerMining : MonoBehaviour
 	[SerializeField] float m_miningInterval;	// 掘る間隔
 	[SerializeField] int m_miningPower;
 	[SerializeField] string m_mineTriggerName;
-	PlayerController m_playerController;
-	Animator m_animator;
-	Quaternion m_targetRotation;	// 採掘時の向き回転
-	Coroutine m_miningCoroutine;
+	private PlayerController m_playerController;
+	private Animator m_animator;
+	private Quaternion m_targetRotation;	// 採掘時の向き回転
+	private Coroutine m_miningCoroutine;
 
-	bool m_canMine;
-	bool m_isRotating;
-	bool m_isMining;
-	bool m_doMineAnim;
+	private bool m_canMine;
+	private bool m_isRotating;
+	private bool m_isMining;
+	private bool m_doMineAnim;
 
 	// ピッケル関連
 	[SerializeField] GameObject m_tool;
@@ -25,8 +25,8 @@ public class PlayerMining : MonoBehaviour
 
 	// 鉱石関連
 	[SerializeField] Transform m_currentOre;
-	Ore m_ore;
-	Ore m_lockedOre;	// 鉱石を保持する用
+	private Ore m_ore;
+	private Ore m_lockedOre;	// 鉱石を保持する用
 
 	private void Awake()
 	{
@@ -120,7 +120,8 @@ public class PlayerMining : MonoBehaviour
 			if (ore != null )
 			{
 				m_ore = ore;
-				m_ore.OutlineAttach();
+				m_ore.CanvasAttach();	// 耐久値バーを表示
+				m_ore.OutlineAttach();	// アウトラインを表示
 			}
 		}
 	}
@@ -140,7 +141,8 @@ public class PlayerMining : MonoBehaviour
 			// すでに鉱石の情報を持っていた場合
 			if (ore == m_ore)
 			{
-				m_ore.OutlineRemove();
+				m_ore.CanvasRemove();	// 耐久値バーを非表示
+				m_ore.OutlineRemove();	// アウトラインを非表示
 				m_ore = null;
 			}
 		}
@@ -186,7 +188,6 @@ public class PlayerMining : MonoBehaviour
 			// 鉱石があれば掘り続ける
 			if (m_lockedOre != null && m_lockedOre.gameObject.activeInHierarchy)
 			{
-				Debug.Log(1);
 				m_animator.SetTrigger(m_mineTriggerName);
 			}
 

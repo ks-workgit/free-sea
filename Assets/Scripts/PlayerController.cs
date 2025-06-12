@@ -7,17 +7,17 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] float m_moveSpeed;
 	[SerializeField] float m_walkSpeed;
 
-	Vector3 m_direction;
-	Vector3 m_velocity;
-	Rigidbody m_rigidBody;
-	Animator m_animator;
+	private Vector3 m_direction;
+	private Vector3 m_velocity;
+	private Rigidbody m_rigidBody;
+	private Animator m_animator;
 
-	bool m_canMove;
-	bool m_isWalkMode;
-	bool m_isMoving;
+	private bool m_canMove;
+	private bool m_isWalkMode;
+	private bool m_isMoving;
 
-	float m_idleTimer;
-	float m_idleThreshold;
+	private float m_idleTimer;
+	private float m_idleThreshold;
 
 	private void Awake()
 	{

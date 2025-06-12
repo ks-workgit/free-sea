@@ -17,7 +17,7 @@ MonoBehaviour:
     m_durability: 10
     m_value: 100
     m_spawnProbability: 0.2
-    m_orePrefab: {fileID: 4955741622212611688, guid: 11ce072f83b641e4688ce9db1e1e4960,
+    m_orePrefab: {fileID: 3769250584135093951, guid: 03662b2a0033ddf4e91fdc51c2f7f9c9,
       type: 3}
     m_oreIcon: {fileID: 0}
   - m_oreName: Iron
