@@ -19,5 +19,6 @@ public class OreSetting
 	[Range(0.01f, 1f)]
 	public float m_spawnProbability;	// 生成確率
 	public GameObject m_orePrefab;		// 生成するプレハブ
-	public Sprite m_oreIcon;			// UI用のアイコン
+	public Sprite m_oreIcon;            // UI用のアイコン
+	public OreType m_oreType;			// 鉱石の種類
 }

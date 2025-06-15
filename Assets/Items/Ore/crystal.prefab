@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2712025764319073453}
   - component: {fileID: 6777707943211675041}
   - component: {fileID: 6273503782022666051}
-  m_Layer: 0
-  m_Name: Crystal
+  m_Layer: 7
+  m_Name: crystal
   m_TagString: Ore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,6 +102,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Crystal
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112241455884854157, guid: 981104bc9b7f54406b81b83211b93b3b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6888497062218742071, guid: 981104bc9b7f54406b81b83211b93b3b,
         type: 3}

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 710199925037155732}
   - component: {fileID: 710199925046683796}
   - component: {fileID: 6894034136640327650}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BlueCrystal05 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 1319351902304054581}
   - component: {fileID: 1319351902296752181}
   - component: {fileID: 6713276259594262982}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BlueCrystal05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 2732471832912881938}
   - component: {fileID: 2732471832907842578}
   - component: {fileID: 3967909363076034666}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BlueCrystal14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 3460142508808632688}
   - component: {fileID: 3460142508803593328}
   - component: {fileID: 3276420556791639343}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BlueCrystal05 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 5812311816476226199}
   - component: {fileID: 5812311816468766615}
   - component: {fileID: 4194098557465749963}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BlueCrystal14 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -653,7 +653,7 @@ GameObject:
   - component: {fileID: 6262658144923053600}
   - component: {fileID: 6262658144915915552}
   - component: {fileID: 4606755421312729340}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BlueCrystal15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -781,7 +781,7 @@ GameObject:
   - component: {fileID: 6795418063623034077}
   - component: {fileID: 6795418063617784285}
   - component: {fileID: 406159960128435828}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BlueCrystal07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -909,7 +909,7 @@ GameObject:
   - component: {fileID: 8262120081411346666}
   - component: {fileID: 8262120081418812906}
   - component: {fileID: 3635537616440777753}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BlueCrystal03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1037,7 +1037,7 @@ GameObject:
   - component: {fileID: 8562680085707696519}
   - component: {fileID: 8562680085698102407}
   - component: {fileID: 5077666358871299609}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rock005 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1164,7 +1164,7 @@ GameObject:
   - component: {fileID: 6268301525119398935}
   - component: {fileID: 6179510690263681512}
   - component: {fileID: 5016008485923383430}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Blue Crystal
   m_TagString: Ore
   m_Icon: {fileID: 0}
