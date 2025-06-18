@@ -9,5 +9,7 @@ public enum OreType
     Iron,
     Gold,
     Diamond,
-    Crystal,
+	Luminite,
+	Crystal,
+	RoseShard,
 }

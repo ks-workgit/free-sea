@@ -1165,7 +1165,7 @@ GameObject:
   - component: {fileID: 6179510690263681512}
   - component: {fileID: 5016008485923383430}
   m_Layer: 7
-  m_Name: Blue Crystal
+  m_Name: Luminite
   m_TagString: Ore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

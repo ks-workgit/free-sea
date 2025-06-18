@@ -113,8 +113,15 @@ public class OreSpawner : MonoBehaviour
     private OreSetting PickRandomOreSetting(List<OreSetting> candidates)
 	{
         // 全候補の出現確率を合計
-        float totalProbability = candidates.Sum(o => o.m_spawnProbability);
-        if (totalProbability <= 0f || candidates.Count == 0) return null;
+        float totalProbability = 0f;
+
+		for (int i = 0; i < candidates.Count; i++)
+		{
+			totalProbability += candidates[i].m_spawnProbability;
+		}
+		
+		// 候補が無い、または確率合計が0以下なら処理をスキップ
+		if (totalProbability <= 0f || candidates.Count == 0) return null;
 
 		// 0～合計確率の範囲内でランダムな値を生成
 		float randomPoint = Random.Range(0f, totalProbability);

@@ -13,27 +13,35 @@ MonoBehaviour:
   m_Name: OreData
   m_EditorClassIdentifier: 
   m_oreList:
-  - m_oreName: Crystal
-    m_durability: 10
-    m_value: 100
-    m_spawnProbability: 0.2
-    m_orePrefab: {fileID: 3769250584135093951, guid: 03662b2a0033ddf4e91fdc51c2f7f9c9,
+  - m_oreName: "\u9244\u9271\u77F3"
+    m_durability: 5
+    m_value: 50
+    m_spawnProbability: 0.5
+    m_orePrefab: {fileID: 6370142114488829862, guid: 9c25bc8d9ad694f4b909a450a296e6c8,
       type: 3}
-    m_oreIcon: {fileID: 0}
-    m_oreType: 5
-  - m_oreName: Blue Crystal
+    m_oreIcon: {fileID: 21300000, guid: f2acbc066cd59024c90344668915f104, type: 3}
+    m_oreType: 2
+  - m_oreName: "\u30EB\u30DF\u30CA\u30A4\u30C8"
     m_durability: 8
     m_value: 80
     m_spawnProbability: 0.3
     m_orePrefab: {fileID: 8888135919476515465, guid: 185b02a5080c0624d8abeef1216f2d48,
       type: 3}
     m_oreIcon: {fileID: 21300000, guid: 0aaea3db77d13004fb8cc5a87697d00f, type: 3}
-    m_oreType: 4
-  - m_oreName: "\u9244\u9271\u77F3"
-    m_durability: 5
-    m_value: 50
-    m_spawnProbability: 0.5
-    m_orePrefab: {fileID: 1486622086784787235, guid: a8fa2651c9e2bb54f8b8b7b4c645ad56,
+    m_oreType: 5
+  - m_oreName: "\u30AF\u30EA\u30B9\u30BF\u30EB"
+    m_durability: 10
+    m_value: 100
+    m_spawnProbability: 0.2
+    m_orePrefab: {fileID: 3769250584135093951, guid: 03662b2a0033ddf4e91fdc51c2f7f9c9,
       type: 3}
     m_oreIcon: {fileID: 0}
-    m_oreType: 2
+    m_oreType: 6
+  - m_oreName: "\u30ED\u30BC\u30B7\u30E3\u30FC\u30C9"
+    m_durability: 12
+    m_value: 200
+    m_spawnProbability: 0.1
+    m_orePrefab: {fileID: 7334699701841256935, guid: 050622be6072fd348a611a1d6f972b94,
+      type: 3}
+    m_oreIcon: {fileID: 0}
+    m_oreType: 7
