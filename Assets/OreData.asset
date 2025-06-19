@@ -35,7 +35,7 @@ MonoBehaviour:
     m_spawnProbability: 0.2
     m_orePrefab: {fileID: 3769250584135093951, guid: 03662b2a0033ddf4e91fdc51c2f7f9c9,
       type: 3}
-    m_oreIcon: {fileID: 0}
+    m_oreIcon: {fileID: 21300000, guid: eaa15d8800ae99e4ea2a399cadb433d3, type: 3}
     m_oreType: 6
   - m_oreName: "\u30ED\u30BC\u30B7\u30E3\u30FC\u30C9"
     m_durability: 12
@@ -43,5 +43,13 @@ MonoBehaviour:
     m_spawnProbability: 0.1
     m_orePrefab: {fileID: 7334699701841256935, guid: 050622be6072fd348a611a1d6f972b94,
       type: 3}
-    m_oreIcon: {fileID: 0}
+    m_oreIcon: {fileID: 21300000, guid: 9d15438eac5f8d84e907e0f7bd120261, type: 3}
     m_oreType: 7
+  - m_oreName: "\u30E9\u30D4\u30B9\u30E9\u30BA\u30EA"
+    m_durability: 12
+    m_value: 200
+    m_spawnProbability: 0.2
+    m_orePrefab: {fileID: 8036015347009412111, guid: 299176fc28513fe4c9f78deb1f55561b,
+      type: 3}
+    m_oreIcon: {fileID: 21300000, guid: 2328adba7e200b244898052b0c2f5ddc, type: 3}
+    m_oreType: 8

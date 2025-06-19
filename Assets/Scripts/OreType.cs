@@ -12,4 +12,5 @@ public enum OreType
 	Luminite,
 	Crystal,
 	RoseShard,
+	LapisLazuli,
 }
