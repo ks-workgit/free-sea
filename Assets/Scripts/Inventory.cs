@@ -24,6 +24,7 @@ public class Inventory : MonoBehaviour
 	private void Start()
 	{
 		m_inventoryUI = GetComponent<InventoryUI>();
+		m_inventoryUI.UpdateUI();
 
 		m_isOpen = true;
 		m_inventory.SetActive(false);
@@ -44,5 +45,17 @@ public class Inventory : MonoBehaviour
 				Cursor.visible = false;
 			}
 		}
+	}
+
+	public void Add(OreSetting ore)
+	{
+		m_oreList.Add(ore);
+		m_inventoryUI.UpdateUI();
+	}
+
+	public void Remove(OreSetting ore)
+	{
+		m_oreList.Remove(ore);
+		m_inventoryUI.UpdateUI();
 	}
 }

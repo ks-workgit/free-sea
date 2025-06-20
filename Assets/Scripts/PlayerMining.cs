@@ -186,7 +186,7 @@ public class PlayerMining : MonoBehaviour
 			m_playerController.StopMove();	// ˆÚ“®‚ğ~‚ß‚é
 
 			// zÎ‚ª‚ ‚ê‚ÎŒ@‚è‘±‚¯‚é
-			if (m_lockedOre != null && m_lockedOre.gameObject.activeInHierarchy)
+			if (!m_lockedOre.OreDurability() && m_lockedOre.gameObject.activeInHierarchy)
 			{
 				m_animator.SetTrigger(m_mineTriggerName);
 			}

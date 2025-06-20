@@ -62,6 +62,7 @@ public class Ore : MonoBehaviour
 
 		if (m_currentDurability <= 0)
 		{
+			Inventory.m_instance.Add(m_oreSetting);
 			Destroy(gameObject);
 		}
     }
