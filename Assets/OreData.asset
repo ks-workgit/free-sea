@@ -75,5 +75,5 @@ MonoBehaviour:
     m_spawnProbability: 0.2
     m_orePrefab: {fileID: 3195198174043796899, guid: 9939def49ae24894ab3e5d3831857bbc,
       type: 3}
-    m_oreIcon: {fileID: 21300000, guid: 9f16591568156d94ab99140754d0a5be, type: 3}
+    m_oreIcon: {fileID: 21300000, guid: 842cae7d78b9ace4980550d2d7e752a6, type: 3}
     m_oreType: 3
