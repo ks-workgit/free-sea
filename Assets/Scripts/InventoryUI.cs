@@ -6,30 +6,32 @@ using UnityEngine.Rendering;
 public class InventoryUI : MonoBehaviour
 {
     [SerializeField] Transform m_inventoryPanel;
-    private Slot[] slots;
+    private Slot[] m_slots;
 
 	private void Awake()
 	{
-		slots = m_inventoryPanel.GetComponentsInChildren<Slot>();
+		m_slots = m_inventoryPanel.GetComponentsInChildren<Slot>();
 	}
 
-	public void UpdateUI()
+	public void UpdateUI(Inventory inventory)
 	{
-		if (slots == null || slots.Length == 0)
+		if (m_slots == null || m_slots.Length == 0)
 		{
 			Debug.LogError("slots ‚ª‰Šú‰»‚³‚ê‚Ä‚¢‚Ü‚¹‚ñI");
 			return;
 		}
 
-		for (int i = 0; i < slots.Length; i++)
+		var oreList = inventory.GetOreList();
+
+		for (int i = 0; i < m_slots.Length; i++)
 		{
-			if (i < Inventory.m_instance.m_oreList.Count)
+			if (i < oreList.Count)
 			{
-				slots[i].AddOre(Inventory.m_instance.m_oreList[i]);
+				m_slots[i].AddOre(oreList[i], inventory);
 			}
 			else
 			{
-				slots[i].ClearOre();
+				m_slots[i].ClearOre();
 			}
 		}
 	}

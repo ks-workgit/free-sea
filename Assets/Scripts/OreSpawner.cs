@@ -8,6 +8,7 @@ public class OreSpawner : MonoBehaviour
     [SerializeField] OreData m_oreData;
 	[SerializeField] LayerMask m_groundLayer;
     [SerializeField] LayerMask m_oreLayer;
+	[SerializeField] Inventory m_inventory;
 
 	private void Start()
 	{
@@ -101,6 +102,7 @@ public class OreSpawner : MonoBehaviour
 				    if (oreSpawn.TryGetComponent<Ore>(out var ore))
 				    {
 					    ore.Initialize(setting);	// Oreにデータを渡す
+                        ore.SetInventory(m_inventory);
 				    }
 
                     spawned = true; // スポーン成功

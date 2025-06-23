@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class Ore : MonoBehaviour
 {
 	private OreSetting m_oreSetting;	// 鉱石の設定データ
-	private int m_currentDurability;	// 現在の耐久値
+	private int m_currentDurability;    // 現在の耐久値
+	[SerializeField] Inventory m_inventory;
 
 	// 耐久値を表示する用
 	[SerializeField] GameObject m_healthBarPrefab;
@@ -62,7 +63,7 @@ public class Ore : MonoBehaviour
 
 		if (m_currentDurability <= 0)
 		{
-			Inventory.m_instance.Add(m_oreSetting);
+			m_inventory.Add(m_oreSetting);
 			Destroy(gameObject);
 		}
     }
@@ -74,6 +75,11 @@ public class Ore : MonoBehaviour
 			// 耐久値バーをカメラの方向に向ける
 			m_healthCanvas.transform.rotation = Camera.main.transform.rotation;
 		}
+	}
+
+	public void SetInventory(Inventory inventory)
+	{
+		m_inventory = inventory;
 	}
 
 	// 耐久値バーを表示

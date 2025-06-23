@@ -14,4 +14,6 @@ public enum OreType
 	RoseShard,
 	LapisLazuli,
 	Topaz,
+	Ruby,
+	Sapphire,
 }

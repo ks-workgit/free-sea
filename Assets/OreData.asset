@@ -77,3 +77,19 @@ MonoBehaviour:
       type: 3}
     m_oreIcon: {fileID: 21300000, guid: 842cae7d78b9ace4980550d2d7e752a6, type: 3}
     m_oreType: 3
+  - m_oreName: "\u30EB\u30D3\u30FC"
+    m_durability: 10
+    m_value: 150
+    m_spawnProbability: 0.2
+    m_orePrefab: {fileID: 1688435588827851808, guid: baf350fd54696544fb519ddc710f3ca8,
+      type: 3}
+    m_oreIcon: {fileID: 21300000, guid: cd907c5c73916d34d86df23a2f0ea728, type: 3}
+    m_oreType: 10
+  - m_oreName: "\u30B5\u30D5\u30A1\u30A4\u30A2"
+    m_durability: 10
+    m_value: 150
+    m_spawnProbability: 0.2
+    m_orePrefab: {fileID: 3950347207299145181, guid: 675012cf66600184d9761229a5aa814f,
+      type: 3}
+    m_oreIcon: {fileID: 21300000, guid: 6844514c4c03477468bed6a1e77536d9, type: 3}
+    m_oreType: 11

@@ -4,58 +4,73 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-	public static Inventory m_instance;
+	[SerializeField] GameObject m_inventoryPanel;
 	private InventoryUI m_inventoryUI;
 
 	// アイテムリスト
-	public List<OreSetting> m_oreList = new List<OreSetting>();
-
-	[SerializeField] GameObject m_inventory;
-	private bool m_isOpen;
-
-	private void Awake()
-	{
-		if (m_instance == null)
-		{
-			m_instance = this;
-		}
-	}
+	private List<InventoryItem> m_oreList = new List<InventoryItem>();
 
 	private void Start()
 	{
 		m_inventoryUI = GetComponent<InventoryUI>();
-		m_inventoryUI.UpdateUI();
+		m_inventoryUI.UpdateUI(this);
 
-		m_isOpen = true;
-		m_inventory.SetActive(false);
+		if (m_inventoryPanel != null)
+		{
+			m_inventoryPanel.SetActive(false);
+		}
 	}
 
 	private void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.E))
 		{
-			Cursor.lockState = CursorLockMode.None;
-			Cursor.visible = true;
+			bool isActive = !m_inventoryPanel.activeSelf;
+			m_inventoryPanel.SetActive(isActive);
 
-			m_inventory.SetActive(!m_inventory.activeSelf);
-
-			if (!m_inventory.activeSelf)
-			{
-				Cursor.lockState = CursorLockMode.Locked;
-				Cursor.visible = false;
-			}
+			Cursor.lockState = isActive ? CursorLockMode.None : CursorLockMode.Locked;
+			Cursor.visible = isActive;
 		}
 	}
 
 	public void Add(OreSetting ore)
 	{
-		m_oreList.Add(ore);
-		m_inventoryUI.UpdateUI();
+		foreach (var item in m_oreList)
+		{
+			if (item.m_ore == ore)
+			{
+				item.m_quantity++;
+				m_inventoryUI.UpdateUI(this);
+				return;
+			}
+		}
+
+		m_oreList.Add(new InventoryItem(ore, 1));
+		m_inventoryUI.UpdateUI(this);
 	}
 
 	public void Remove(OreSetting ore)
 	{
-		m_oreList.Remove(ore);
-		m_inventoryUI.UpdateUI();
+		for (int i = 0; i < m_oreList.Count; i++)
+		{
+			if (m_oreList[i].m_ore == ore)
+			{
+				m_oreList[i].m_quantity--;
+
+				if (m_oreList[i].m_quantity <= 0)
+				{
+					m_oreList.RemoveAt(i);
+				}
+
+				break;
+			}
+		}
+
+		m_inventoryUI.UpdateUI(this);
+	}
+
+	public List<InventoryItem> GetOreList()
+	{
+		return m_oreList;
 	}
 }

@@ -961,6 +961,7 @@ MonoBehaviour:
   m_oreLayer:
     serializedVersion: 2
     m_Bits: 128
+  m_inventory: {fileID: 659154991}
 --- !u!4 &345955692
 Transform:
   m_ObjectHideFlags: 0
@@ -1753,6 +1754,89 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6385862882933266208, guid: 39b9cbe654535304ab6ccb60b7ee8cd7, type: 3}
+--- !u!1001 &384989527
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2188879446113320825, guid: 5dd23a1d746d1e94ea7585454e1c3cbe,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 45.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188879446113320825, guid: 5dd23a1d746d1e94ea7585454e1c3cbe,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188879446113320825, guid: 5dd23a1d746d1e94ea7585454e1c3cbe,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 24.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188879446113320825, guid: 5dd23a1d746d1e94ea7585454e1c3cbe,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188879446113320825, guid: 5dd23a1d746d1e94ea7585454e1c3cbe,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188879446113320825, guid: 5dd23a1d746d1e94ea7585454e1c3cbe,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188879446113320825, guid: 5dd23a1d746d1e94ea7585454e1c3cbe,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188879446113320825, guid: 5dd23a1d746d1e94ea7585454e1c3cbe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188879446113320825, guid: 5dd23a1d746d1e94ea7585454e1c3cbe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188879446113320825, guid: 5dd23a1d746d1e94ea7585454e1c3cbe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847242096088963877, guid: 5dd23a1d746d1e94ea7585454e1c3cbe,
+        type: 3}
+      propertyPath: m_allowedTypes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847242096088963877, guid: 5dd23a1d746d1e94ea7585454e1c3cbe,
+        type: 3}
+      propertyPath: m_allowedTypes.Array.data[0]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847242096088963877, guid: 5dd23a1d746d1e94ea7585454e1c3cbe,
+        type: 3}
+      propertyPath: m_allowedTypes.Array.data[1]
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778064347962952045, guid: 5dd23a1d746d1e94ea7585454e1c3cbe,
+        type: 3}
+      propertyPath: m_Name
+      value: OreSpawnPoint (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5dd23a1d746d1e94ea7585454e1c3cbe, type: 3}
 --- !u!1 &405754630 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2240026734119055211, guid: c79a4ee50bba1764fb28f2aacd637922,
@@ -3002,8 +3086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bb092a994cbee1478425b7e42548892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_oreList: []
-  m_inventory: {fileID: 1033250038}
+  m_inventoryPanel: {fileID: 1033250038}
 --- !u!114 &659154992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7936,3 +8019,4 @@ SceneRoots:
   - {fileID: 730241351}
   - {fileID: 2102738490}
   - {fileID: 35116124}
+  - {fileID: 384989527}
