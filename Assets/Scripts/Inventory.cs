@@ -7,12 +7,14 @@ public class Inventory : MonoBehaviour
 	[SerializeField] GameObject m_inventoryPanel;
 	private InventoryUI m_inventoryUI;
 
-	// アイテムリスト
+	// 現在の所持アイテムリスト
 	private List<InventoryItem> m_oreList = new List<InventoryItem>();
 
 	private void Start()
 	{
 		m_inventoryUI = GetComponent<InventoryUI>();
+
+		// 初期UI更新
 		m_inventoryUI.UpdateUI(this);
 
 		if (m_inventoryPanel != null)
@@ -28,47 +30,63 @@ public class Inventory : MonoBehaviour
 			bool isActive = !m_inventoryPanel.activeSelf;
 			m_inventoryPanel.SetActive(isActive);
 
+			// カーソルの表示/非表示を切り替え
 			Cursor.lockState = isActive ? CursorLockMode.None : CursorLockMode.Locked;
 			Cursor.visible = isActive;
 		}
 	}
 
+	// 鉱石をインベントリに追加
 	public void Add(OreSetting ore)
 	{
-		foreach (var item in m_oreList)
+        // インベントリ内のすべてのアイテムを1つずつチェックする
+        foreach (var item in m_oreList)
 		{
-			if (item.m_ore == ore)
+            // すでに同じ種類の鉱石があるかどうかをチェック
+            if (item.m_ore == ore)
 			{
-				item.m_quantity++;
-				m_inventoryUI.UpdateUI(this);
-				return;
-			}
+                // 同じ鉱石が見つかったのでそのスタック数を1増やす
+                item.m_quantity++;
+
+                // UIを更新して最新状態にする
+                m_inventoryUI.UpdateUI(this);
+				return; // 追加処理は終わったのでメソッドを終了
+            }
 		}
 
-		m_oreList.Add(new InventoryItem(ore, 1));
-		m_inventoryUI.UpdateUI(this);
-	}
+        // 同じ鉱石が見つからなかった場合、新しくリストに追加する
+        m_oreList.Add(new InventoryItem(ore, 1));
+		m_inventoryUI.UpdateUI(this);   // UIを更新
+    }
 
+	// 鉱石をインベントリから1つ削除
 	public void Remove(OreSetting ore)
 	{
-		for (int i = 0; i < m_oreList.Count; i++)
+        // インベントリ内をインデックス付きで走査する
+        for (int i = 0; i < m_oreList.Count; i++)
 		{
-			if (m_oreList[i].m_ore == ore)
+            // i番目の鉱石が、削除対象の鉱石と一致するかどうかをチェック
+            if (m_oreList[i].m_ore == ore)
 			{
-				m_oreList[i].m_quantity--;
+                // 一致したらスタック数を1減らす
+                m_oreList[i].m_quantity--;
 
+				// 数が0以下になったらインベントリから削除
 				if (m_oreList[i].m_quantity <= 0)
 				{
 					m_oreList.RemoveAt(i);
 				}
 
-				break;
+                // 処理が完了したのでループを抜ける
+                break;
 			}
 		}
 
-		m_inventoryUI.UpdateUI(this);
+        // UIを更新して最新状態に反映
+        m_inventoryUI.UpdateUI(this);
 	}
 
+	// 現在の所持鉱石の一覧を返す
 	public List<InventoryItem> GetOreList()
 	{
 		return m_oreList;

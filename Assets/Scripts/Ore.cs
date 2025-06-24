@@ -63,8 +63,17 @@ public class Ore : MonoBehaviour
 
 		if (m_currentDurability <= 0)
 		{
-			m_inventory.Add(m_oreSetting);
-			Destroy(gameObject);
+			// ランダムにドロップ数を決定
+			int dropCount = Random.Range(m_oreSetting.m_minDrop, m_oreSetting.m_maxDrop + 1);
+
+			// 決定した個数分のアイテムをインベントリに追加
+			for (int i = 0; i < dropCount; i++)
+			{
+				m_inventory.Add(m_oreSetting);
+			}
+
+            Debug.Log($"{m_oreSetting.m_oreName} を {dropCount}個ドロップ");
+            Destroy(gameObject);
 		}
     }
 

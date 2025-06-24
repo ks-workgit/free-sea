@@ -20,5 +20,8 @@ public class OreSetting
 	public float m_spawnProbability;	// 生成確率
 	public GameObject m_orePrefab;		// 生成するプレハブ
 	public Sprite m_oreIcon;            // UI用のアイコン
-	public OreType m_oreType;			// 鉱石の種類
+	public OreType m_oreType;           // 鉱石の種類
+	[Header("ドロップ設定")]
+	[Min(1)] public int m_minDrop = 1;	// 最低ドロップ数
+	[Min(1)] public int m_maxDrop = 1;	// 最大ドロップ数
 }

@@ -112,14 +112,17 @@ public class PlayerMining : MonoBehaviour
 	{
 		if (other.CompareTag("Ore"))
 		{
+			// すでに他の鉱石に触れている場合は無視
+			if (m_currentOre != null) return;
+
 			// 鉱石の情報を取得
 			Ore ore = other.GetComponent<Ore>();
-			m_currentOre = other.transform;
-
+			
 			// 鉱石が範囲内にある時
 			if (ore != null )
 			{
-				m_ore = ore;
+                m_currentOre = other.transform;
+                m_ore = ore;
 				m_ore.CanvasAttach();	// 耐久値バーを表示
 				m_ore.OutlineAttach();	// アウトラインを表示
 			}
