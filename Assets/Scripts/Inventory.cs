@@ -60,7 +60,7 @@ public class Inventory : MonoBehaviour
     }
 
 	// 鉱石をインベントリから1つ削除
-	public void Remove(OreSetting ore)
+	public void Remove(OreSetting ore, int count = 1)
 	{
         // インベントリ内をインデックス付きで走査する
         for (int i = 0; i < m_oreList.Count; i++)
@@ -68,8 +68,8 @@ public class Inventory : MonoBehaviour
             // i番目の鉱石が、削除対象の鉱石と一致するかどうかをチェック
             if (m_oreList[i].m_ore == ore)
 			{
-                // 一致したらスタック数を1減らす
-                m_oreList[i].m_quantity--;
+				// 一致したらスタック数を1減らす
+				m_oreList[i].m_quantity -= count;
 
 				// 数が0以下になったらインベントリから削除
 				if (m_oreList[i].m_quantity <= 0)
