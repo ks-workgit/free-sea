@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,12 +10,12 @@ public class Slot : MonoBehaviour
     [SerializeField] Image m_icon;
     [SerializeField] TMP_Text m_quantityText;   // 所持数を表示するテキスト
     //[SerializeField] TMP_InputField m_sellCountInput;
-    //[SerializeField] Button m_sellButton;
+   // [SerializeField] Button m_button;
     [SerializeField] GameObject m_removeButton;
 
     private InventoryItem m_item;       // このスロットに表示されているアイテム情報
     private Inventory m_inventoryRef;   // アイテム削除などのためのインベントリ参照
-    private System.Action<InventoryItem> m_onClickCallback;
+    //private System.Action<InventoryItem> m_onClickCallback;
 
 	//private void OnEnable()
 	//{
@@ -27,52 +28,72 @@ public class Slot : MonoBehaviour
 	//}
 
 	// 鉱石情報とインベントリ参照を受け取り、スロットUIを更新する
-	public void AddOre(InventoryItem item, Inventory inventory, System.Action<InventoryItem> onClick = null)
+	public void Setup(InventoryItem item, Inventory inventory, Action<InventoryItem> onClick = null)
     {
-        m_item = item;      // 表示するアイテムを保持
-        m_inventoryRef = inventory;     // インベントリ操作用に参照を保持
-        m_onClickCallback = onClick;
+        m_item = item;
+        m_inventoryRef = inventory;
 
-        m_icon.sprite = item.m_ore.m_oreIcon;   // 鉱石のアイコンを設定
-        m_icon.enabled = true;  // アイコン画像を表示
+        // アイコンと数量表示
+        m_icon.sprite = item.m_ore.m_oreIcon;
+        m_icon.enabled = true;
 
-        m_quantityText.text = item.m_quantity.ToString();   // 所持数を表示
+        m_quantityText.text = item.m_quantity.ToString();
         m_quantityText.enabled = true;
 
-        //m_sellCountInput.text = "";
-        //m_sellCountInput.gameObject.SetActive(true);
-        //m_sellButton.gameObject.SetActive(true);
+        // 削除ボタンを表示（プレイヤーインベントリとして使用する場合）
+        m_removeButton?.SetActive(onClick == null);
 
-        //UpdateSellUIVisibility(Merchant.Instance.IsTalking());
-
-        m_removeButton.SetActive(true); // 削除ボタンを表示
-    }
-
-    public void OnClick()
-    {
-        if (m_onClickCallback != null && m_item != null)
+        // スロット自体にクリックイベントを設定（商人UI用など）
+        Button btn = GetComponentInChildren<Button>();
+        if (btn != null)
         {
-            m_onClickCallback.Invoke(m_item);
+            btn.onClick.RemoveAllListeners();
+
+            if (onClick != null)
+            {
+                btn.onClick.AddListener(() => onClick.Invoke(item));
+            }
+            else
+            {
+                btn.onClick.AddListener(OnRemoveButton); // デフォルト動作として削除
+            }
         }
     }
+
+    //public void Setup(InventoryItem item, Inventory inventory)
+    //{
+    //    //AddOre(item, inventory, null);
+    //    //m_button.interactable = false;
+    //}
+
+    //public void OnClick()
+    //{
+    //    //if (m_onClickCallback != null && m_item != null)
+    //    //{
+    //    //    m_onClickCallback.Invoke(m_item);
+    //    //}
+    //}
 
     // スロットを空にし、UI表示をリセットする
     public void ClearOre()
     {
         m_item = null;
         m_inventoryRef = null;
-        m_onClickCallback = null;
 
-        m_icon.sprite = null;   
+        m_icon.sprite = null;
         m_icon.enabled = false;
 
         m_quantityText.text = "";
-        m_quantityText.enabled = false; // 所持数テキストを消す
+        m_quantityText.enabled = false;
 
-        //m_sellCountInput.text = "";
-        //m_sellCountInput.gameObject.SetActive(false);
-        //m_sellButton.gameObject.SetActive(false);
-        m_removeButton.SetActive(false);    // 削除ボタンを非表示
+        m_removeButton?.SetActive(false);
+
+        // クリックイベント解除
+        Button btn = GetComponent<Button>();
+        if (btn != null)
+        {
+            btn.onClick.RemoveAllListeners();
+        }
     }
 
  //   public void OnSellAmount()
@@ -108,7 +129,7 @@ public class Slot : MonoBehaviour
         // アイテム情報とインベントリ参照があれば削除処理を呼ぶ
         if (m_item != null && m_inventoryRef != null)
         {
-            m_inventoryRef.Remove(m_item.m_ore);
+            m_inventoryRef.Remove(m_item.m_ore, 1);
         }
     }
 }

@@ -101,7 +101,7 @@ public class OreSpawner : MonoBehaviour
 				    var oreSpawn = Instantiate(setting.m_orePrefab, spawnPos, Quaternion.identity);
 				    if (oreSpawn.TryGetComponent<Ore>(out var ore))
 				    {
-					    ore.Initialize(setting);	// Oreにデータを渡す
+					    ore.Initialize(setting, m_inventory);	// Oreにデータを渡す
                         ore.SetInventory(m_inventory);
 				    }
 

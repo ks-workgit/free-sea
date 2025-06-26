@@ -23,9 +23,10 @@ public class Ore : MonoBehaviour
 	}
 
     // 鉱石に必要な情報を渡して初期化する
-    public void Initialize(OreSetting setting)
+    public void Initialize(OreSetting setting, Inventory inventory)
 	{
 		m_oreSetting = setting;
+		m_inventory = inventory;
 		m_currentDurability = m_oreSetting.m_durability;
 
 		// HPバー生成

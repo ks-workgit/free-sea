@@ -8,13 +8,13 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     // 所持金
-    public int Money { get; private set; } = 0;
+    public int Money = 0;
 
     // ピッケルの強化レベル
-    public int PickaxeLevel { get; private set; } = 0;
+    public int PickaxeLevel = 0;
 
     // 帰還中かどうか
-    public bool IsAtBase { get; private set; } = false;
+    //public bool IsAtBase { get; private set; } = false;
 
 	private void Awake()
 	{
@@ -34,6 +34,11 @@ public class GameManager : MonoBehaviour
     {
         Money += amount;
         Debug.Log($"所持金: {Money}G");
+    }
+
+    public int GetMoney()
+    {
+        return Money;
     }
 
     // お金を使う
@@ -60,15 +65,15 @@ public class GameManager : MonoBehaviour
     }
 
     // 帰還状態の切り替え
-    public void EnterBase()
-    {
-        IsAtBase = true;
-        Debug.Log("拠点に帰還しました");
-    }
+    //public void EnterBase()
+    //{
+    //    IsAtBase = true;
+    //    Debug.Log("拠点に帰還しました");
+    //}
 
-    public void LeaveBase()
-    {
-        IsAtBase = false;
-        Debug.Log("探索に出発しました");
-    }
+    //public void LeaveBase()
+    //{
+    //    IsAtBase = false;
+    //    Debug.Log("探索に出発しました");
+    //}
 }
