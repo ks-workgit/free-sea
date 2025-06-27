@@ -10,13 +10,8 @@ public class Inventory : MonoBehaviour
 	// 現在の所持アイテムリスト
 	private List<InventoryItem> m_oreList = new List<InventoryItem>();
 
-    
-
     private void Start()
 	{
-        // UIコンポーネント取得
-        //m_inventoryUI = GetComponent<InventoryUI>();
-
         // 初期状態でUI更新（空の状態）
         m_inventoryUI.UpdateUI(this);
 

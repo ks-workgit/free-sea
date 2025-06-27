@@ -38,7 +38,6 @@ public class InventoryUI : MonoBehaviour
 		{
 			if (i < oreList.Count)
 			{
-                //m_slots[i].gameObject.SetActive(true);
                 // アイテムが存在する場合はその情報をUIにセット
                 m_slots[i].Setup(oreList[i], inventory, onClick);
 			}
@@ -46,7 +45,6 @@ public class InventoryUI : MonoBehaviour
 			{
 				// アイテムがないスロットは空にして非表示にする
 				m_slots[i].ClearOre();
-                //m_slots[i].gameObject.SetActive(false);
             }
 		}
 	}

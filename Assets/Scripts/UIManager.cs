@@ -57,11 +57,12 @@ public class UIManager : MonoBehaviour
             }
 
             ToggleInventory(m_merchantPanel, () => {
-                m_merchantInventoryUI.Initialize(m_playerInventory, m_playerInventoryUI);
-
-                // 商人 UI 用にコールバック付きで表示
-                m_playerInventoryUI.UpdateUI(m_playerInventory, m_merchantInventoryUI.SelectOre);
-            });
+				m_playerInventoryPanel.SetActive(true);
+				m_merchantInventoryUI.Initialize(m_playerInventory, m_playerInventoryUI);
+				m_playerInventoryUI.UpdateUI(m_playerInventory, m_merchantInventoryUI.SelectOre);
+				// 商人 UI 用にコールバック付きで表示
+				//m_playerInventoryUI.UpdateUI(m_playerInventory, m_merchantInventoryUI.SelectOre);
+			});
         }
     }
 
