@@ -10,7 +10,7 @@ public class MerchantInventoryUI : MonoBehaviour
     [SerializeField] TMP_InputField m_inputField;
     [SerializeField] Button m_sellButton;
     [SerializeField] TMP_Text m_oreNameText;
-    [SerializeField] TMP_Text m_oreCountText;
+    //[SerializeField] TMP_Text m_oreCountText;
     [SerializeField] TMP_Text m_moneyText;
 
     private Inventory m_playerInventory;
@@ -22,15 +22,15 @@ public class MerchantInventoryUI : MonoBehaviour
         m_playerInventory = inventory;
         m_inventoryUI = inventoryUI;
 
-        m_selectedItem = null;
-        m_inputField.gameObject.SetActive(false);
-        m_sellButton.gameObject.SetActive(false);
-        m_oreNameText.text = "";
-        m_oreCountText.text = "";
+        //m_selectedItem = null;
+        //m_inputField.gameObject.SetActive(false);
+        //m_sellButton.gameObject.SetActive(false);
+        //m_oreNameText.text = "";
+        //m_oreCountText.text = "";
         m_sellButton.onClick.RemoveAllListeners();
         m_sellButton.onClick.AddListener(SellOre);
 
-        //ClearSelection();
+        ClearSelection();
         
         UpdateMoneyText();
 
@@ -42,7 +42,7 @@ public class MerchantInventoryUI : MonoBehaviour
         m_selectedItem = item;
 
         m_oreNameText.text = item.m_ore.m_oreName;
-        m_oreCountText.text = $"所持数: {item.m_quantity}";
+        //m_oreCountText.text = $"所持数: {item.m_quantity}";
 
         m_inputField.text = "1";
         m_inputField.gameObject.SetActive(true);
@@ -73,15 +73,17 @@ public class MerchantInventoryUI : MonoBehaviour
 
         UpdateMoneyText();
         // UIを更新
-        m_inputField.text = "";
-        m_inputField.gameObject.SetActive(false);
-        m_sellButton.gameObject.SetActive(false);
-        m_oreNameText.text = "";
-        m_oreCountText.text = "";
-        m_selectedItem = null;
+        //m_inputField.text = "";
+        //m_inputField.gameObject.SetActive(false);
+        //m_sellButton.gameObject.SetActive(false);
+        //m_oreNameText.text = "";
+        //m_oreCountText.text = "";
+        //m_selectedItem = null;
 
         // ここでインベントリUIも更新して再表示させる（重要）
         m_inventoryUI.UpdateUI(m_playerInventory, SelectOre);
+
+        ClearSelection();
     }
 
     private void UpdateMoneyText()
@@ -101,6 +103,6 @@ public class MerchantInventoryUI : MonoBehaviour
         m_sellButton.gameObject.SetActive(false);
 
         m_oreNameText.text = "";
-        m_oreCountText.text = "";
+        //m_oreCountText.text = "";
     }
 }

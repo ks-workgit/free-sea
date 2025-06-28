@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -8,11 +9,12 @@ public class InventoryUI : MonoBehaviour
 {
     [SerializeField] Transform m_inventoryPanel;
     private Slot[] m_slots;
+	[SerializeField] TMP_Text m_moneyText;
 
 	private void Awake()
 	{
 		m_slots = m_inventoryPanel.GetComponentsInChildren<Slot>(true);
-	}
+    }
 
 	// インベントリの情報を受け取りUIスロットに表示を反映する
 	public void UpdateUI(Inventory inventory, Action<InventoryItem> onClick = null)
@@ -47,5 +49,15 @@ public class InventoryUI : MonoBehaviour
 				m_slots[i].ClearOre();
             }
 		}
-	}
+
+		UpdateMoneyText();
+    }
+
+    private void UpdateMoneyText()
+    {
+        if (m_moneyText != null)
+        {
+            m_moneyText.text = $"所持金: {GameManager.Instance.GetMoney()} G";
+        }
+    }
 }

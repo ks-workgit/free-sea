@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -17,6 +18,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] Merchant m_merchantTrigger;
     [SerializeField] GameObject m_inventoryBack;
 
+    [SerializeField] TMP_Text m_moneyText;
+    [SerializeField] Cinemachine.CinemachineFreeLook m_freeLookCamera;
+
     private void Start()
     { 
         // 安全に初期化（非アクティブだとスロットが取れないケース対策）
@@ -26,6 +30,7 @@ public class UIManager : MonoBehaviour
             m_playerInventoryUI.UpdateUI(m_playerInventory);
             m_playerInventoryPanel.SetActive(false);
             m_inventoryBack.SetActive(false);
+            m_moneyText.gameObject.SetActive(false);
         }
 
         if (m_merchantPanel != null)
@@ -62,8 +67,6 @@ public class UIManager : MonoBehaviour
 				m_playerInventoryPanel.SetActive(true);
 				m_merchantInventoryUI.Initialize(m_playerInventory, m_playerInventoryUI);
 				m_playerInventoryUI.UpdateUI(m_playerInventory, m_merchantInventoryUI.SelectOre);
-				// 商人 UI 用にコールバック付きで表示
-				//m_playerInventoryUI.UpdateUI(m_playerInventory, m_merchantInventoryUI.SelectOre);
 			});
         }
     }
@@ -75,19 +78,21 @@ public class UIManager : MonoBehaviour
         bool isActive = !panel.activeSelf;
         panel.SetActive(isActive);
         m_inventoryBack.SetActive(isActive);
+        m_moneyText.gameObject.SetActive(isActive);
 
         GameManager.Instance.SetUIOpen(isActive);
 
         if (isActive)
         {
             onOpen?.Invoke(); // UIが開かれたときに内容を更新
-        //    Cursor.lockState = CursorLockMode.None;
-        //    Cursor.visible = true;
-        //}
-        //else
-        //{
-        //    Cursor.lockState = CursorLockMode.Locked;
-        //    Cursor.visible = false;
+
+            m_freeLookCamera.m_XAxis.m_InputAxisName = "";
+            m_freeLookCamera.m_YAxis.m_InputAxisName = "";
+        }
+        else
+        {
+            m_freeLookCamera.m_XAxis.m_InputAxisName = "Mouse X";
+            m_freeLookCamera.m_YAxis.m_InputAxisName = "Mouse Y";
         }
     }
 }

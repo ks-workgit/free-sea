@@ -13,6 +13,8 @@ public class Inventory : MonoBehaviour
 
     private void Start()
 	{
+        SetOreList(GameManager.Instance.LoadInventory());
+
         // 初期状態でUI更新（空の状態）
         m_inventoryUI.UpdateUI(this);
 
@@ -96,6 +98,12 @@ public class Inventory : MonoBehaviour
 	{
 		return m_oreList;
 	}
+
+    public void SetOreList(List<InventoryItem> items)
+    {
+        m_oreList = new List<InventoryItem>(items);
+        m_inventoryUI.UpdateUI(this);
+    }
 
     public int GetQuantity(OreSetting ore)
     {
