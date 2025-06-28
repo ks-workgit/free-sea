@@ -18,9 +18,6 @@ public class GameManager : MonoBehaviour
     // ピッケルの強化レベル
     public int PickaxeLevel = 0;
 
-    // 帰還中かどうか
-    //public bool IsAtBase { get; private set; } = false;
-
 	private void Awake()
 	{
         // すでにインスタンスが存在していたら自分を破棄
@@ -96,17 +93,4 @@ public class GameManager : MonoBehaviour
         PickaxeLevel++;
         Debug.Log($"ピッケルがレベルアップ！現在のレベル:{PickaxeLevel}");
     }
-
-    // 帰還状態の切り替え
-    //public void EnterBase()
-    //{
-    //    IsAtBase = true;
-    //    Debug.Log("拠点に帰還しました");
-    //}
-
-    //public void LeaveBase()
-    //{
-    //    IsAtBase = false;
-    //    Debug.Log("探索に出発しました");
-    //}
 }

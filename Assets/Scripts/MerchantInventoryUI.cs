@@ -22,11 +22,6 @@ public class MerchantInventoryUI : MonoBehaviour
         m_playerInventory = inventory;
         m_inventoryUI = inventoryUI;
 
-        //m_selectedItem = null;
-        //m_inputField.gameObject.SetActive(false);
-        //m_sellButton.gameObject.SetActive(false);
-        //m_oreNameText.text = "";
-        //m_oreCountText.text = "";
         m_sellButton.onClick.RemoveAllListeners();
         m_sellButton.onClick.AddListener(SellOre);
 
@@ -44,7 +39,7 @@ public class MerchantInventoryUI : MonoBehaviour
         m_oreNameText.text = item.m_ore.m_oreName;
         //m_oreCountText.text = $"所持数: {item.m_quantity}";
 
-        m_inputField.text = "1";
+        m_inputField.text = "";
         m_inputField.gameObject.SetActive(true);
         m_sellButton.gameObject.SetActive(true);
     }
@@ -72,13 +67,6 @@ public class MerchantInventoryUI : MonoBehaviour
         Debug.Log($"{m_selectedItem.m_ore.m_oreName} を {sellCount}個 売却（+{gain}G）");
 
         UpdateMoneyText();
-        // UIを更新
-        //m_inputField.text = "";
-        //m_inputField.gameObject.SetActive(false);
-        //m_sellButton.gameObject.SetActive(false);
-        //m_oreNameText.text = "";
-        //m_oreCountText.text = "";
-        //m_selectedItem = null;
 
         // ここでインベントリUIも更新して再表示させる（重要）
         m_inventoryUI.UpdateUI(m_playerInventory, SelectOre);
@@ -103,6 +91,5 @@ public class MerchantInventoryUI : MonoBehaviour
         m_sellButton.gameObject.SetActive(false);
 
         m_oreNameText.text = "";
-        //m_oreCountText.text = "";
     }
 }
