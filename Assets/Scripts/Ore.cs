@@ -9,8 +9,12 @@ public class Ore : MonoBehaviour
 	private int m_currentDurability;    // 現在の耐久値
 	[SerializeField] Inventory m_inventory;
 
-	// 耐久値を表示する用
-	[SerializeField] GameObject m_healthBarPrefab;
+    [SerializeField] float m_respawnDelay = 30f; // 復活までの秒数
+    private OreSpawnPoint m_originSpawnPoint;
+    private List<OreSetting> m_candidateList;
+
+    // 耐久値を表示する用
+    [SerializeField] GameObject m_healthBarPrefab;
 	private Slider m_healthBarSlider;
 	private Canvas m_healthCanvas;
 
@@ -23,10 +27,12 @@ public class Ore : MonoBehaviour
 	}
 
     // 鉱石に必要な情報を渡して初期化する
-    public void Initialize(OreSetting setting, Inventory inventory)
+    public void Initialize(OreSetting setting, OreSpawnPoint spawnPoint, List<OreSetting> candidates, Inventory inventory)
 	{
 		m_oreSetting = setting;
-		m_inventory = inventory;
+        m_originSpawnPoint = spawnPoint;
+        m_candidateList = candidates;
+        m_inventory = inventory;
 		m_currentDurability = m_oreSetting.m_durability;
 
 		// HPバー生成
@@ -72,6 +78,10 @@ public class Ore : MonoBehaviour
 			{
 				m_inventory.Add(m_oreSetting);
 			}
+
+            // Spawner に再スポーンを依頼
+            OreSpawner spawner = FindObjectOfType<OreSpawner>();
+            spawner.RespawnOreDelayed(m_originSpawnPoint, m_candidateList, m_respawnDelay);
 
             Debug.Log($"{m_oreSetting.m_oreName} を {dropCount}個ドロップ");
             Destroy(gameObject);

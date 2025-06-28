@@ -5,7 +5,8 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
 	[SerializeField] GameObject m_inventoryPanel;
-    [SerializeField] private InventoryUI m_inventoryUI;
+    [SerializeField] InventoryUI m_inventoryUI;
+    [SerializeField] int m_maxStackSize;
 
 	// 現在の所持アイテムリスト
 	private List<InventoryItem> m_oreList = new List<InventoryItem>();
@@ -47,7 +48,7 @@ public class Inventory : MonoBehaviour
         foreach (var item in m_oreList)
 		{
             // すでに同じ種類の鉱石があるかどうかをチェック
-            if (item.m_ore == ore)
+            if (item.m_ore == ore && item.m_quantity < m_maxStackSize)
 			{
                 // 同じ鉱石が見つかったのでそのスタック数を1増やす
                 item.m_quantity++;

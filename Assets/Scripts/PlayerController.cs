@@ -71,8 +71,10 @@ public class PlayerController : MonoBehaviour
 	}
 
 	private void FixedUpdate()
-	{
-		MovePlayer();
+    {
+        if (GameManager.Instance.IsUIOpen) return;
+
+        MovePlayer();
 	}
 
 	private void ProcessInput()

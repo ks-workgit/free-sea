@@ -9,6 +9,7 @@ public class OreSpawner : MonoBehaviour
 	[SerializeField] LayerMask m_groundLayer;
     [SerializeField] LayerMask m_oreLayer;
 	[SerializeField] Inventory m_inventory;
+    [SerializeField] Transform m_playerTransform;
 
 	private void Start()
 	{
@@ -101,7 +102,7 @@ public class OreSpawner : MonoBehaviour
 				    var oreSpawn = Instantiate(setting.m_orePrefab, spawnPos, Quaternion.identity);
 				    if (oreSpawn.TryGetComponent<Ore>(out var ore))
 				    {
-					    ore.Initialize(setting, m_inventory);	// Oreにデータを渡す
+					    ore.Initialize(setting, centerObject.GetComponent<OreSpawnPoint>(), candidates, m_inventory);	// Oreにデータを渡す
                         ore.SetInventory(m_inventory);
 				    }
 
@@ -144,4 +145,24 @@ public class OreSpawner : MonoBehaviour
 		// 万が一見つからなかった場合は最後の候補を返す
 		return candidates[candidates.Count - 1];
 	}
+
+    public void RespawnOreDelayed(OreSpawnPoint spawnPoint, List<OreSetting> candidates, float delay)
+    {
+        StartCoroutine(RespawnCoroutine(spawnPoint, candidates, delay));
+    }
+
+    private IEnumerator RespawnCoroutine(OreSpawnPoint spawnPoint, List<OreSetting> candidates, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // プレイヤーが近くにいたら待機
+        while (m_playerTransform != null && Vector3.Distance(spawnPoint.transform.position, m_playerTransform.position) < 30f)
+        {
+            yield return new WaitForSeconds(1f);
+        }
+
+        // 再度ランダムにスポーン
+        SpawnOre(spawnPoint.transform, spawnPoint.m_spawnRadius, 1, candidates);
+        Debug.Log("復活");
+    }
 }

@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     // シングルトンインスタンス
     public static GameManager Instance { get; private set; }
 
+    public bool IsUIOpen { get; private set; } = false;
+
     // 所持金
     public int Money = 0;
 
@@ -28,6 +30,14 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 	}
+
+    public void SetUIOpen(bool isOpen)
+    {
+        IsUIOpen = isOpen;
+
+        Cursor.visible = isOpen;
+        Cursor.lockState = isOpen ? CursorLockMode.None : CursorLockMode.Locked;
+    }
 
     // お金を増やす
     public void AddMoney(int amount)

@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     [Header("共通")]
     [SerializeField] Inventory m_playerInventory;
     [SerializeField] Merchant m_merchantTrigger;
+    [SerializeField] GameObject m_inventoryBack;
 
     private void Start()
     { 
@@ -24,6 +25,7 @@ public class UIManager : MonoBehaviour
             m_playerInventoryPanel.SetActive(true);
             m_playerInventoryUI.UpdateUI(m_playerInventory);
             m_playerInventoryPanel.SetActive(false);
+            m_inventoryBack.SetActive(false);
         }
 
         if (m_merchantPanel != null)
@@ -72,17 +74,20 @@ public class UIManager : MonoBehaviour
 
         bool isActive = !panel.activeSelf;
         panel.SetActive(isActive);
+        m_inventoryBack.SetActive(isActive);
+
+        GameManager.Instance.SetUIOpen(isActive);
 
         if (isActive)
         {
             onOpen?.Invoke(); // UIが開かれたときに内容を更新
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+        //    Cursor.lockState = CursorLockMode.None;
+        //    Cursor.visible = true;
+        //}
+        //else
+        //{
+        //    Cursor.lockState = CursorLockMode.Locked;
+        //    Cursor.visible = false;
         }
     }
 }

@@ -15,7 +15,7 @@ public class MerchantInventoryUI : MonoBehaviour
 
     private Inventory m_playerInventory;
     private InventoryItem m_selectedItem;
-    [SerializeField] private InventoryUI m_inventoryUI;
+    [SerializeField] InventoryUI m_inventoryUI;
 
     public void Initialize(Inventory inventory, InventoryUI inventoryUI)
 	{
