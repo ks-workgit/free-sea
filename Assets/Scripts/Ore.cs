@@ -7,7 +7,8 @@ public class Ore : MonoBehaviour
 {
 	private OreSetting m_oreSetting;	// 鉱石の設定データ
 	private int m_currentDurability;    // 現在の耐久値
-	[SerializeField] Inventory m_inventory;
+    [SerializeField] AudioClip m_clip;
+    [SerializeField] Inventory m_inventory;
 
     [SerializeField] float m_respawnDelay = 30f; // 復活までの秒数
     private OreSpawnPoint m_originSpawnPoint;
@@ -22,7 +23,7 @@ public class Ore : MonoBehaviour
 
 	private void Start()
 	{
-		m_outline = GetComponent<Outline>();
+        m_outline = GetComponent<Outline>();
 		m_outline.enabled = false;
 	}
 
@@ -84,8 +85,9 @@ public class Ore : MonoBehaviour
             spawner.RespawnOreDelayed(m_originSpawnPoint, m_candidateList, m_respawnDelay);
 
             Debug.Log($"{m_oreSetting.m_oreName} を {dropCount}個ドロップ");
+            AudioSource.PlayClipAtPoint(m_clip, transform.position);
             Destroy(gameObject);
-		}
+        }
     }
 
     private void LateUpdate()

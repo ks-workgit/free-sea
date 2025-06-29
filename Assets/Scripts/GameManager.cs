@@ -15,9 +15,6 @@ public class GameManager : MonoBehaviour
 
     public List<InventoryItem> savedInventory = new List<InventoryItem>();
 
-    // ピッケルの強化レベル
-    public int PickaxeLevel = 0;
-
 	private void Awake()
 	{
         // すでにインスタンスが存在していたら自分を破棄
@@ -61,22 +58,6 @@ public class GameManager : MonoBehaviour
         return Money;
     }
 
-    // お金を使う
-    public bool SpendMoney(int amount)
-    {
-        if (Money >= amount)
-        {
-            Money -= amount;
-            Debug.Log($"購入成功！残金:{Money}G");
-            return true;
-        }
-        else
-        {
-            Debug.Log("お金が足りません！");
-            return false;
-        }
-    }
-
     public void StartGame()
     {
         SceneManager.LoadScene("Game");
@@ -85,12 +66,5 @@ public class GameManager : MonoBehaviour
     public void ReturnToTitle()
     {
         SceneManager.LoadScene("Title");
-    }
-
-    // ピッケルのレベルを上げる
-    public void UpgradePickaxe()
-    {
-        PickaxeLevel++;
-        Debug.Log($"ピッケルがレベルアップ！現在のレベル:{PickaxeLevel}");
     }
 }

@@ -26,12 +26,15 @@ public class PlayerMining : MonoBehaviour
 	// zÎŠÖ˜A
 	[SerializeField] Transform m_currentOre;
 	private Ore m_ore;
-	private Ore m_lockedOre;	// zÎ‚ğ•Û‚·‚é—p
+	private Ore m_lockedOre;    // zÎ‚ğ•Û‚·‚é—p
+    private AudioSource m_audioSource;
+    [SerializeField] AudioClip m_clip;
 
-	private void Awake()
+    private void Awake()
 	{
 		m_playerController = GetComponent<PlayerController>();
 		m_animator = GetComponent<Animator>();
+		m_audioSource = GetComponent<AudioSource>();
 	}
 
 	private void Start()
@@ -219,6 +222,7 @@ public class PlayerMining : MonoBehaviour
 		{
 			// •Û‚µ‚½zÎ‚ğŒ@‚é
 			m_lockedOre.Mine(m_miningPower);
+			m_audioSource.PlayOneShot(m_clip);
 		}
 	}
 

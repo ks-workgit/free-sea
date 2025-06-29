@@ -10,12 +10,19 @@ public class MerchantInventoryUI : MonoBehaviour
     [SerializeField] TMP_InputField m_inputField;
     [SerializeField] Button m_sellButton;
     [SerializeField] TMP_Text m_oreNameText;
-    //[SerializeField] TMP_Text m_oreCountText;
     [SerializeField] TMP_Text m_moneyText;
 
     private Inventory m_playerInventory;
     private InventoryItem m_selectedItem;
     [SerializeField] InventoryUI m_inventoryUI;
+
+    private AudioSource m_audioSource;
+    [SerializeField] AudioClip m_clip;
+
+    private void Awake()
+    {
+        m_audioSource = GetComponent<AudioSource>();
+    }
 
     public void Initialize(Inventory inventory, InventoryUI inventoryUI)
 	{
@@ -37,11 +44,10 @@ public class MerchantInventoryUI : MonoBehaviour
         m_selectedItem = item;
 
         m_oreNameText.text = item.m_ore.m_oreName;
-        //m_oreCountText.text = $"èäéùêî: {item.m_quantity}";
 
         m_inputField.text = "";
-        m_inputField.gameObject.SetActive(true);
-        m_sellButton.gameObject.SetActive(true);
+        m_inputField.interactable = true;
+        m_sellButton.interactable = true;
     }
 
     private void SellOre()
@@ -63,6 +69,7 @@ public class MerchantInventoryUI : MonoBehaviour
 
         // èäéùã‡Ç…â¡éZ
         GameManager.Instance.AddMoney(gain);
+        m_audioSource.PlayOneShot(m_clip);
 
         Debug.Log($"{m_selectedItem.m_ore.m_oreName} Ç {sellCount}å¬ îÑãpÅi+{gain}GÅj");
 
@@ -86,9 +93,9 @@ public class MerchantInventoryUI : MonoBehaviour
     {
         m_selectedItem = null;
         m_inputField.text = "";
-        m_inputField.gameObject.SetActive(false);
+        m_inputField.interactable = false;
 
-        m_sellButton.gameObject.SetActive(false);
+        m_sellButton.interactable = false;
 
         m_oreNameText.text = "";
     }

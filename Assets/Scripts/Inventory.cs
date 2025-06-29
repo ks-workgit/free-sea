@@ -25,24 +25,6 @@ public class Inventory : MonoBehaviour
         }
     }
 
-	private void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.E))
-		{
-			bool isActive = !m_inventoryPanel.activeSelf;
-			m_inventoryPanel.SetActive(isActive);
-
-			// カーソルの表示/非表示を切り替え
-			Cursor.lockState = isActive ? CursorLockMode.None : CursorLockMode.Locked;
-			Cursor.visible = isActive;
-
-            if (isActive)
-            {
-                m_inventoryUI.UpdateUI(this); // 開くたびにUIを更新
-            }
-        }
-	}
-
 	// 鉱石をインベントリに追加
 	public void Add(OreSetting ore)
 	{
@@ -103,22 +85,5 @@ public class Inventory : MonoBehaviour
     {
         m_oreList = new List<InventoryItem>(items);
         m_inventoryUI.UpdateUI(this);
-    }
-
-    public int GetQuantity(OreSetting ore)
-    {
-        foreach (var item in m_oreList)
-        {
-            if (item.m_ore == ore)
-            {
-                return item.m_quantity;
-            }
-        }
-        return 0;
-    }
-
-    public bool HasEnough(OreSetting ore, int amount)
-    {
-        return GetQuantity(ore) >= amount;
     }
 }

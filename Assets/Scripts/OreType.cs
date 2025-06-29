@@ -10,7 +10,6 @@ public enum OreType
     Gold,
     Diamond,
 	Luminite,
-	Crystal,
 	RoseShard,
 	LapisLazuli,
 	Topaz,

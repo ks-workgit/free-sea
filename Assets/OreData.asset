@@ -21,18 +21,18 @@ MonoBehaviour:
       type: 3}
     m_oreIcon: {fileID: 21300000, guid: f1057c3eac757164a818f3b39cd27d5a, type: 3}
     m_oreType: 1
-    m_minDrop: 2
-    m_maxDrop: 4
+    m_minDrop: 4
+    m_maxDrop: 6
   - m_oreName: "\u9244\u9271\u77F3"
     m_durability: 5
     m_value: 50
-    m_spawnProbability: 0.5
+    m_spawnProbability: 0.6
     m_orePrefab: {fileID: 6370142114488829862, guid: 9c25bc8d9ad694f4b909a450a296e6c8,
       type: 3}
     m_oreIcon: {fileID: 21300000, guid: f2acbc066cd59024c90344668915f104, type: 3}
     m_oreType: 2
-    m_minDrop: 1
-    m_maxDrop: 3
+    m_minDrop: 2
+    m_maxDrop: 4
   - m_oreName: "\u91D1\u9271\u77F3"
     m_durability: 10
     m_value: 150
@@ -42,7 +42,7 @@ MonoBehaviour:
     m_oreIcon: {fileID: 21300000, guid: 842cae7d78b9ace4980550d2d7e752a6, type: 3}
     m_oreType: 3
     m_minDrop: 1
-    m_maxDrop: 2
+    m_maxDrop: 3
   - m_oreName: "\u30EB\u30DF\u30CA\u30A4\u30C8"
     m_durability: 8
     m_value: 80
@@ -53,46 +53,46 @@ MonoBehaviour:
     m_oreType: 5
     m_minDrop: 1
     m_maxDrop: 2
-  - m_oreName: "\u30AF\u30EA\u30B9\u30BF\u30EB"
-    m_durability: 10
-    m_value: 100
-    m_spawnProbability: 0.2
+  - m_oreName: "\u30C0\u30A4\u30E4\u30E2\u30F3\u30C9"
+    m_durability: 15
+    m_value: 300
+    m_spawnProbability: 0.05
     m_orePrefab: {fileID: 3769250584135093951, guid: 03662b2a0033ddf4e91fdc51c2f7f9c9,
       type: 3}
     m_oreIcon: {fileID: 21300000, guid: eaa15d8800ae99e4ea2a399cadb433d3, type: 3}
-    m_oreType: 6
+    m_oreType: 4
     m_minDrop: 1
     m_maxDrop: 2
   - m_oreName: "\u30ED\u30BC\u30B7\u30E3\u30FC\u30C9"
     m_durability: 12
-    m_value: 200
-    m_spawnProbability: 0.1
+    m_value: 250
+    m_spawnProbability: 0.05
     m_orePrefab: {fileID: 7334699701841256935, guid: 050622be6072fd348a611a1d6f972b94,
       type: 3}
     m_oreIcon: {fileID: 21300000, guid: 9d15438eac5f8d84e907e0f7bd120261, type: 3}
-    m_oreType: 7
+    m_oreType: 6
     m_minDrop: 1
     m_maxDrop: 2
   - m_oreName: "\u30E9\u30D4\u30B9\u30E9\u30BA\u30EA"
-    m_durability: 12
-    m_value: 200
+    m_durability: 8
+    m_value: 100
     m_spawnProbability: 0.2
     m_orePrefab: {fileID: 8036015347009412111, guid: 299176fc28513fe4c9f78deb1f55561b,
       type: 3}
     m_oreIcon: {fileID: 21300000, guid: 2328adba7e200b244898052b0c2f5ddc, type: 3}
-    m_oreType: 8
-    m_minDrop: 2
-    m_maxDrop: 3
+    m_oreType: 7
+    m_minDrop: 4
+    m_maxDrop: 6
   - m_oreName: "\u30C8\u30D1\u30FC\u30BA"
-    m_durability: 12
-    m_value: 200
+    m_durability: 8
+    m_value: 140
     m_spawnProbability: 0.2
     m_orePrefab: {fileID: 4723965036584165096, guid: 4d9ff360f2f8f434ab26971236a295be,
       type: 3}
     m_oreIcon: {fileID: 21300000, guid: 9f16591568156d94ab99140754d0a5be, type: 3}
-    m_oreType: 9
+    m_oreType: 8
     m_minDrop: 1
-    m_maxDrop: 2
+    m_maxDrop: 3
   - m_oreName: "\u30EB\u30D3\u30FC"
     m_durability: 10
     m_value: 150
@@ -100,9 +100,9 @@ MonoBehaviour:
     m_orePrefab: {fileID: 1688435588827851808, guid: baf350fd54696544fb519ddc710f3ca8,
       type: 3}
     m_oreIcon: {fileID: 21300000, guid: cd907c5c73916d34d86df23a2f0ea728, type: 3}
-    m_oreType: 10
+    m_oreType: 9
     m_minDrop: 1
-    m_maxDrop: 2
+    m_maxDrop: 3
   - m_oreName: "\u30B5\u30D5\u30A1\u30A4\u30A2"
     m_durability: 10
     m_value: 150
@@ -110,6 +110,6 @@ MonoBehaviour:
     m_orePrefab: {fileID: 3950347207299145181, guid: 675012cf66600184d9761229a5aa814f,
       type: 3}
     m_oreIcon: {fileID: 21300000, guid: 6844514c4c03477468bed6a1e77536d9, type: 3}
-    m_oreType: 11
+    m_oreType: 10
     m_minDrop: 1
-    m_maxDrop: 2
+    m_maxDrop: 3
